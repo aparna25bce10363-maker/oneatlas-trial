@@ -1,32 +1,39 @@
-import { AppIntent } from "../types/intent"
+import type { IntentType } from "../types/intent"
 
 export function repairIntentFields(
-
-  data: Partial<AppIntent>
-
-): AppIntent {
+  data: Partial<IntentType>
+): IntentType {
 
   return {
 
-    appName:
-      data.appName || "Untitled App",
+    success:
+      data.success ?? true,
 
-    appType:
-      data.appType || "custom",
+    data: {
 
-    features:
-      data.features || [],
+      appName:
+        data.data?.appName ||
+        "Untitled App",
 
-    entities:
-      data.entities || [],
+      appType:
+        data.data?.appType ||
+        "custom",
 
-    integrations_requested:
-      data.integrations_requested || [],
+      features:
+        data.data?.features || [],
 
-    assumptions:
-      data.assumptions || [
-        "Default assumptions applied"
-      ]
+      entities:
+        data.data?.entities || [],
+
+      integrations_requested:
+        data.data?.integrations_requested || [],
+
+      assumptions:
+        data.data?.assumptions || [
+          "Default assumptions applied"
+        ]
+
+    }
 
   }
 
