@@ -23,7 +23,7 @@ export default function HomePage() {
 
       const response =
         await fetch(
-          "https://oneatlas-trial-nckq.onrender.com/",
+          "https://oneatlas-trial-1.onrender.com/generate",
           {
             method: "POST",
 
@@ -46,7 +46,7 @@ export default function HomePage() {
 
       const eventSource =
         new EventSource(
-          `https://oneatlas-trial-nckq.onrender.com/stream/${jobId}`
+          `https://oneatlas-trial-1.onrender.com/stream/${jobId}`
         )
 
       eventSource.onmessage =
