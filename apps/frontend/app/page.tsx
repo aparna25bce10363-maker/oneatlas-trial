@@ -38,29 +38,32 @@ export default function HomePage() {
           }
         )
 
-      const result =
-        await response.json()
+const result =
+  await response.json()
 
-      const jobId =
-        result.jobId
+alert(JSON.stringify(result, null, 2))
+
+const jobId =
+  result.jobId
 
       const eventSource =
         new EventSource(
           `https://oneatlas-trial-1.onrender.com/stream/${jobId}`
         )
 
-      eventSource.onmessage =
-        (event) => {
+eventSource.onmessage = (event) => {
 
-          const data =
-            JSON.parse(event.data)
+  console.log("SSE:", event.data)
 
-          setLogs((prev) => [
-            ...prev,
-            data
-          ])
+  const data =
+    JSON.parse(event.data)
 
-        }
+  setLogs((prev) => [
+    ...prev,
+    data
+  ])
+
+}
 
       eventSource.onerror =
         () => {
